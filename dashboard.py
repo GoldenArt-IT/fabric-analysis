@@ -13,10 +13,22 @@ spreadsheet_id = "1tIJkVd-J9kZ0N4wOdo9ODLoC__j19yyNcbKuKNElDZQ"
 worksheet_name = "DATA SALES CO & FABRIC"
 
 # Read data from Google Sheets
-df = conn.read(spreadsheet=spreadsheet_id, worksheet=worksheet_name, ttl=5)
-df = df.dropna(how="all")
+try:
+    df = conn.read(spreadsheet=spreadsheet_id, worksheet=worksheet_name, ttl=5)
+    df = df.dropna(how="all")
+    st.dataframe(df)
+except Exception as e:
+    st.error(f"Error loading data: {e}")
 
-st.dataframe(df)
+# Plotting example (assuming the dataframe has relevant columns)
+if not df.empty:
+    try:
+        fig, ax = plt.subplots()
+        df.plot(kind='bar', ax=ax)
+        st.pyplot(fig)
+    except Exception as e:
+        st.error(f"Error plotting data: {e}")
+
 
 # Your additional Streamlit app code here
 
