@@ -4,10 +4,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Read the secrets from the TOML file
-client_id = st.secrets["gsheets"]["client_id"]
-client_secret = st.secrets["gsheets"]["client_secret"]
-refresh_token = st.secrets["gsheets"]["refresh_token"]
-spreadsheet_id = st.secrets["gsheets"]["spreadsheet_id"]
+client_id = st.secrets["connections.gsheets"]["client_id"]
+client_secret = st.secrets["connections.gsheets"]["client_secret"]
+refresh_token = st.secrets["connections.gsheets"]["refresh_token"]
+spreadsheet_id = st.secrets["connections.gsheets"]["spreadsheet_id"]
 
 # Initialize the connection
 conn = st.connection("gsheets", type=GSheetsConnection, config={
