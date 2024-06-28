@@ -3,37 +3,16 @@ from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.title("Fabric Usage Dashboard")
+# Set page to always wide
+st.set_page_config(layout="wide")
 
-# Define the connection
+st.title("Fabric Analysis")
+
 conn = st.connection("gsheets", type=GSheetsConnection)
+df = conn.read(worksheet="DATA SALES CO & FABRIC", ttl=5)
+df = df.dropna(how="all")
 
-# Specify the spreadsheet ID and worksheet name
-spreadsheet_id = "1tIJkVd-J9kZ0N4wOdo9ODLoC__j19yyNcbKuKNElDZQ"
-worksheet_name = "457908029"
-
-# Read data from Google Sheets
-try:
-    st.write("Connecting to Google Sheets...")
-    df = conn.read(spreadsheet=spreadsheet_id, worksheet=worksheet_name, ttl=5)
-    df = df.dropna(how="all")
-    st.dataframe(df)
-except Exception as e:
-    st.error(f"Error loading data: {e}")
-    df = pd.DataFrame()  # Initialize an empty dataframe in case of an error
-
-# Plotting example (assuming the dataframe has relevant columns)
-if not df.empty:
-    try:
-        fig, ax = plt.subplots()
-        df.plot(kind='bar', ax=ax)
-        st.pyplot(fig)
-    except Exception as e:
-        st.error(f"Error plotting data: {e}")
-else:
-    st.warning("No data available to plot.")
-
-
+# st.dataframe(df)
 
 # Convert date column to datetime
 date_column = 'TIMESTAMP'
