@@ -9,7 +9,7 @@ st.title("Fabric Usage Dashboard")
 conn = st.connection("gsheets", type=GSheetsConnection)
 
 # Specify the spreadsheet and worksheet
-spreadsheet = "1tIJkVd-J9kZ0N4wOdo9ODLoC__j19yyNcbKuKNElDZQ"
+spreadsheet = '1tIJkVd-J9kZ0N4wOdo9ODLoC__j19yyNcbKuKNElDZQ'
 worksheet = "DATA SALES CO & FABRIC"
 
 # Read data from Google Sheets
