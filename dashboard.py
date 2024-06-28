@@ -14,11 +14,13 @@ worksheet_name = "DATA SALES CO & FABRIC"
 
 # Read data from Google Sheets
 try:
+    st.write("Connecting to Google Sheets...")
     df = conn.read(spreadsheet=spreadsheet_id, worksheet=worksheet_name, ttl=5)
     df = df.dropna(how="all")
     st.dataframe(df)
 except Exception as e:
     st.error(f"Error loading data: {e}")
+    df = pd.DataFrame()  # Initialize an empty dataframe in case of an error
 
 # Plotting example (assuming the dataframe has relevant columns)
 if not df.empty:
@@ -28,9 +30,8 @@ if not df.empty:
         st.pyplot(fig)
     except Exception as e:
         st.error(f"Error plotting data: {e}")
-
-
-# Your additional Streamlit app code here
+else:
+    st.warning("No data available to plot.")
 
 
 
