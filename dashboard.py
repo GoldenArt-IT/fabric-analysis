@@ -10,7 +10,7 @@ conn = st.connection("gsheets", type=GSheetsConnection)
 
 # Specify the spreadsheet ID and worksheet name
 spreadsheet_id = "1tIJkVd-J9kZ0N4wOdo9ODLoC__j19yyNcbKuKNElDZQ"
-worksheet_name = "DATA SALES CO & FABRIC"
+worksheet_name = "457908029"
 
 # Read data from Google Sheets
 try:
