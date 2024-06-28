@@ -1,7 +1,7 @@
-pandas==2.2.2
-numpy==2.0.0
-matplotlib==3.9.0
-openpyxl==3.1.4
-plotly==5.22.0
-streamlit==1.22.0
+pandas
+numpy
+matplotlib
+openpyxl
+plotly
+streamlit
 git+https://github.com/streamlit/gsheets-connection
