@@ -3,4 +3,3 @@ numpy
 matplotlib 
 openpyxl
 plotly
-streamlit_gsheets
