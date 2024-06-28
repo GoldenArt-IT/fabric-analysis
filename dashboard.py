@@ -3,16 +3,23 @@ from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Set page to always wide
-st.set_page_config(layout="wide")
-
 st.title("Fabric Usage Dashboard")
 
+# Define the connection
 conn = st.connection("gsheets", type=GSheetsConnection)
-df = conn.read(worksheet="DATA SALES CO & FABRIC", ttl=5)
+
+# Specify the spreadsheet and worksheet
+spreadsheet = "1tIJkVd-J9kZ0N4wOdo9ODLoC__j19yyNcbKuKNElDZQ"
+worksheet = "DATA SALES CO & FABRIC"
+
+# Read data from Google Sheets
+df = conn.read(spreadsheet=spreadsheet, worksheet=worksheet, ttl=5)
 df = df.dropna(how="all")
 
 # st.dataframe(df)
+
+# Your additional Streamlit app code here
+
 
 # Convert date column to datetime
 date_column = 'TIMESTAMP'
