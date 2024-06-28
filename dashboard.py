@@ -8,17 +8,18 @@ st.title("Fabric Usage Dashboard")
 # Define the connection
 conn = st.connection("gsheets", type=GSheetsConnection)
 
-# Specify the spreadsheet and worksheet
-spreadsheet = '1tIJkVd-J9kZ0N4wOdo9ODLoC__j19yyNcbKuKNElDZQ'
-worksheet = "DATA SALES CO & FABRIC"
+# Specify the spreadsheet ID and worksheet name
+spreadsheet_id = "1tIJkVd-J9kZ0N4wOdo9ODLoC__j19yyNcbKuKNElDZQ"
+worksheet_name = "DATA SALES CO & FABRIC"
 
 # Read data from Google Sheets
-df = conn.read(spreadsheet=spreadsheet, worksheet=worksheet, ttl=5)
+df = conn.read(spreadsheet=spreadsheet_id, worksheet=worksheet_name, ttl=5)
 df = df.dropna(how="all")
 
-# st.dataframe(df)
+st.dataframe(df)
 
 # Your additional Streamlit app code here
+
 
 
 # Convert date column to datetime
