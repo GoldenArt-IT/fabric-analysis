@@ -3,26 +3,16 @@ from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Read the secrets from the TOML file
-client_id = st.secrets["connections"]["gsheets"]["client_id"]
-client_secret = st.secrets["connections"]["gsheets"]["client_secret"]
-refresh_token = st.secrets["connections"]["gsheets"]["refresh_token"]
-spreadsheet_id = st.secrets["connections"]["gsheets"]["spreadsheet_id"]
+# Set page to always wide
+st.set_page_config(layout="wide")
 
-# Initialize the connection
-conn = st.connection("gsheets", type=GSheetsConnection, config={
-    "client_id": client_id,
-    "client_secret": client_secret,
-    "refresh_token": refresh_token,
-    "spreadsheet_id": spreadsheet_id
-})
+st.title("Fabric Analysis")
 
-# Read the data from the specified worksheet
+conn = st.connection("gsheets", type=GSheetsConnection)
 df = conn.read(worksheet="DATA SALES CO & FABRIC", ttl=5)
 df = df.dropna(how="all")
 
-st.title("Fabric Analysis")
-st.dataframe(df)
+# st.dataframe(df)
 
 # Convert date column to datetime
 date_column = 'TIMESTAMP'
