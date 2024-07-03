@@ -23,7 +23,7 @@ def main():
     credentials = load_credentials()
 
     if not st.session_state.logged_in:
-        st.title("Login Page")
+        st.title("Login")
         # Create login form
         username = st.text_input("Email")
         password = st.text_input("Password", type="password")
@@ -46,7 +46,6 @@ def main():
         # Google Sheets connection and data display
         # Set page to always wide
         st.set_page_config(layout="wide")
-        
         st.title("Fabric Analysis")
 
         conn = st.connection("gsheets", type=GSheetsConnection)
