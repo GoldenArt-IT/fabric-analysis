@@ -12,9 +12,6 @@ def load_credentials():
 def authenticate(username, password, credentials):
     return credentials.get(username) == password
 
-# Set page to always wide
-st.set_page_config(layout="wide")
-
 # Main function to run the Streamlit app
 def main():
     # Initialize session state for login status
@@ -47,6 +44,9 @@ def main():
             st.rerun()
 
         # Google Sheets connection and data display
+        # Set page to always wide
+        st.set_page_config(layout="wide")
+        
         st.title("Fabric Analysis")
 
         conn = st.connection("gsheets", type=GSheetsConnection)
